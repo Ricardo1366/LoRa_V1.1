@@ -23,6 +23,8 @@ void setup()
 
   // Configuramos la interrupción de control del temporizador
   attachInterrupt(digitalPinToInterrupt(TPL5010_WAKE), despertar, RISING);
+  // Enviamos el primer "DONE" para evitar que el temporizador nos resetee antes de que envíe
+  // la siguiente señal de "despierta".
   digitalWrite(TPL5010_DONE, HIGH);
   Serial2.println(F("Evitando el reseteo. --------------------------------------"));
   digitalWrite(TPL5010_DONE, LOW);
